@@ -16,11 +16,11 @@ class ModelTests(TestCase):
             # file=<read doc file management>,
             metadata='Sample description here',
             rating=Decimal('7'),
-            channel=models.Channel.objects.create(
-                title='Sample title here',
-                language='English',
-                # picture=<read docker doc file management>,
-            )
+            # channel=models.Channel.objects.create(
+            #     title='Sample title here',
+            #     language='English',
+            #     # picture=<read docker file management>,
+            # )
         )
 
         self.assertEqual(str(content), content.metadata)
@@ -30,7 +30,7 @@ class ModelTests(TestCase):
         channel = models.Channel.objects.create(
             title='Sample title here',
             language='English',
-            # picture=<read docker doc file management>,
+            # picture=<read docker file management>,
         )
 
         self.assertEqual(str(channel), channel.title)
