@@ -5,32 +5,75 @@ from decimal import Decimal
 
 from django.test import TestCase
 
-from core import models
+from core.models import Content, Channel
 
 
-class ModelTests(TestCase):
-    """Test models"""
-    def test_content(self):
-        """test if creating a content is successful"""
-        content = models.Content.objects.create(
-            # file=<read doc file management>,
-            metadata='Sample description here',
+class ContentTest(TestCase):
+    """Test Content Model"""
+    def setUp(self):
+        """set up the object"""
+        self.content = Content.objects.create(
+            title='Sample Title',
+            metadata='Sample Description Here',
             rating=Decimal('7'),
-            # channel=models.Channel.objects.create(
-            #     title='Sample title here',
-            #     language='English',
-            #     # picture=<read docker file management>,
-            # )
         )
 
-        self.assertEqual(str(content), content.metadata)
+    def test_content(self):
+        """test if creating a content is successful"""
+        self.assertEqual(
+            self.content.title, 'Sample Title'
+        )
+        self.assertEqual(
+            self.content.metadata, 'Sample Description Here'
+        )
+        self.assertEqual(
+            self.content.rating, Decimal('7')
+        )
+
+    # def test_content(self):
+    #     """test if creating a content is successful"""
+    #     content = models.Content.objects.create(
+    #         title='Sample Title',
+    #         # file=<read doc file management>,
+    #         metadata='Sample description here',
+    #         rating=Decimal('7'),
+    #         # channel=models.Channel.objects.create(
+    #         #     title='Sample title here',
+    #         #     language='English',
+    #         #     # picture=<read docker file management>,
+    #         # )
+    #     )
+
+    #     self.assertEqual(str(content), content.title)
+
+
+class ChannelTest(TestCase):
+    """Test Channel Model"""
+    def setUp(self) -> None:
+        """set up the Channel object"""
+        self.channel = Channel.objects.create(
+            title='Channel',
+            language='English',
+            picture='channel1.jpg',
+        )
 
     def test_channel(self):
         """test if creating a channel is successful"""
-        channel = models.Channel.objects.create(
-            title='Sample title here',
-            language='English',
-            # picture=<read docker file management>,
+        self.assertEqual(
+            self.channel.title, 'Channel'
         )
+        self.assertEqual(
+            self.channel.language, 'English'
+        )
+        self.assertEqual(
+            self.channel.picture, 'channel1.jpg'
+        )
+    # def test_channel(self):
+    #     """test if creating a channel is successful"""
+    #     channel = models.Channel.objects.create(
+    #         title='Sample title here',
+    #         language='English',
+    #         # picture=<read docker file management>,
+    #     )
 
-        self.assertEqual(str(channel), channel.title)
+    #     self.assertEqual(str(channel), channel.title)
