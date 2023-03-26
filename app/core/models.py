@@ -1,7 +1,6 @@
 """
 API models
 """
-from django.conf import settings  # noqa
 from django.db import models
 from django.core.files import File  # noqa
 
@@ -20,7 +19,7 @@ class Content(models.Model):
     #     )
 
     def __str__(self):
-        return self.metadata
+        return self.title
 
 
 class Channel(models.Model):
@@ -28,16 +27,9 @@ class Channel(models.Model):
     title = models.CharField(max_length=255)
     language = models.CharField(max_length=255)
     picture = models.ImageField(upload_to='channels')
-    # subchannel = models.ForeignKey(
-    #     'self',
-    #     on_delete=models.CASCADE,
-    #     related_name='subchannels',
-    #     null=True,
-    #     blank=True,
-    # )
     contents = models.ManyToManyField(
         Content,
-        related_name='channels',
+        # related_name='channels',
         blank=True,
     )
     subchannels = models.ManyToManyField(
@@ -46,24 +38,35 @@ class Channel(models.Model):
         symmetrical=False,
         related_name='parent_channels'
     )
+    parent_channel = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        related_name='subchannels',
+        null=True,
+        blank=True
+        )
 
-    def get_rating(self):
-        """get the rating average of a channel's content"""
-        if self.subchannels.exists():
-            total_rating = 0
-            for subchannel in self.subchannels.all():
-                total_rating += subchannel.get_rating()
-            return total_rating / self.subchannels.count()
-
-        elif self.contents.exists():
-            total_rating = 0
-            for content in self.contents.all():
-                if content.rating is not None:
-                    total_rating += content.rating
-            return total_rating / self.contents.count()
-
-        else:
-            return None
+    # def get_rating(self):
+    #     """
+    #     Calculate the rating of the channel based on the
+    #     ratings of its subchannels and/or contents.
+    #     """
+    #     if self.subchannels.exists():
+    #         # Calculate the average rating of subchannels
+    #         subchannel_ratings = [
+    #             subchannel.get_rating() for subchannel in self.subchannels.all()
+    #             ]
+    #         rating = sum(subchannel_ratings) / len(subchannel_ratings)
+    #     else:
+    #         # Calculate the average rating of contents
+    #         content_ratings = [
+    #             content.rating for content in self.contents.all()
+    #             ]
+    #         if content_ratings:
+    #             rating = sum(content_ratings) / len(content_ratings)
+    #         else:
+    #             rating = None
+    #     return rating
 
     def __str__(self):
         return self.title

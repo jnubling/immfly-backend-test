@@ -1,10 +1,14 @@
 """
 Test custom commands from Django management
 """
-# from unittest.mock import patch
+from django.test import TestCase
 
-# from psycopg2 import OperationalError as Psycopg2Error
+from decimal import Decimal
 
-# from django.core.management import call_command
-# from django.db.utils import OperationalError
-# from django.test import SimpleTestCase
+from core.models import Channel, Content
+from core.management.commands.calculate_rating import Command
+
+
+class CalculateRatingTest(TestCase):
+    """test rating command"""
+    pass

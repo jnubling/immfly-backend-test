@@ -30,22 +30,6 @@ class ContentTest(TestCase):
             self.content.rating, Decimal('7')
         )
 
-    # def test_content(self):
-    #     """test if creating a content is successful"""
-    #     content = models.Content.objects.create(
-    #         title='Sample Title',
-    #         # file=<read doc file management>,
-    #         metadata='Sample description here',
-    #         rating=Decimal('7'),
-    #         # channel=models.Channel.objects.create(
-    #         #     title='Sample title here',
-    #         #     language='English',
-    #         #     # picture=<read docker file management>,
-    #         # )
-    #     )
-
-    #     self.assertEqual(str(content), content.title)
-
 
 class ChannelTest(TestCase):
     """Test Channel Model"""
@@ -68,15 +52,13 @@ class ChannelTest(TestCase):
         self.assertEqual(
             self.channel.picture, 'channel1.jpg'
         )
-    # def test_channel(self):
-    #     """test if creating a channel is successful"""
-    #     channel = models.Channel.objects.create(
-    #         title='Sample title here',
-    #         language='English',
-    #         # picture=<read docker file management>,
-    #     )
 
-    #     self.assertEqual(str(channel), channel.title)
+    def test_creating_channel_with_subchannel_and_content(self):
+        """
+        test if creating a channel with subchannel(s)
+        and content(s) raise an error
+        """
+        pass
 
     def test_get_rating(self):
         """test if function get_rating is calculating right"""
