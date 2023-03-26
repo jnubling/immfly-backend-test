@@ -18,7 +18,7 @@ class ContentTest(TestCase):
             rating=Decimal('7'),
         )
 
-    def test_content(self):
+    def test_content_creation(self):
         """test if creating a content is successful"""
         self.assertEqual(
             self.content.title, 'Sample Title'
@@ -57,7 +57,7 @@ class ChannelTest(TestCase):
             picture='channel1.jpg',
         )
 
-    def test_channel(self):
+    def test_channel_creation(self):
         """test if creating a channel is successful"""
         self.assertEqual(
             self.channel.title, 'Channel'
@@ -77,3 +77,7 @@ class ChannelTest(TestCase):
     #     )
 
     #     self.assertEqual(str(channel), channel.title)
+
+    def test_get_rating(self):
+        """test if function get_rating is calculating right"""
+        pass

@@ -1,9 +1,10 @@
 """
 API models
 """
-from django.conf import settings
+from django.conf import settings  # noqa
 from django.db import models
-from django.core.files import File
+from django.core.files import File  # noqa
+
 
 class Content(models.Model):
     """Content model object"""
@@ -63,7 +64,6 @@ class Channel(models.Model):
 
         else:
             return None
-
 
     def __str__(self):
         return self.title
