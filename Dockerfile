@@ -1,5 +1,5 @@
 FROM python:3.11-alpine3.17
-LABEL maintainer="Jonnathan"
+LABEL maintainer="Jonnathan-Immfly Backend Technical Test"
 
 ENV PYTHONUNBUFFERED 1
 
