@@ -38,7 +38,7 @@ very convinced that it is working properly.
 
 The course of REST API has many topics related with the development of this project,
 and many of these topics are yet relatively new to me: I.e. The concepts of
-Serializers and Views, Filtering with tags/groups, objects retrival and the
+Serializers and Views, Filtering with tags/groups, objects retrieval and the
 application deployment, and I think these are essencial subjects to continue the
 development of this technical test.
 

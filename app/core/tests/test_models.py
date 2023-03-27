@@ -53,10 +53,17 @@ class ChannelTest(TestCase):
             self.channel.picture, 'channel1.jpg'
         )
 
-    def test_creating_channel_with_subchannel_and_content(self):
+    def test_creating_channel_and_subchannel_with_content(self):
         """
-        test if creating a channel with subchannel(s)
-        and content(s) raise an error
+        test if creating a subchannel in a channel
+        with content(s) raise an error
+        """
+        pass
+
+    def test_creating_channel_and_content_with_subchannel(self):
+        """
+        test if creating a content in a channel with
+        subchannel(s) raise and error
         """
         pass
 
